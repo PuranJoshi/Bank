@@ -1,3 +1,7 @@
 class ProductRecommendation {
-  constructor()
+
+}
+
+module.exports = {
+  ProductRecommendation
 }
