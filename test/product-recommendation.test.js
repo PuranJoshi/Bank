@@ -3,8 +3,8 @@ const {expect} = require('chai');
 
 describe('ProductRecommendation', ()=> {
   describe('#getBundles()', () => {
-    it('should return Junior Saver Account when age is less than 18',() => {
-      let bundle = ProductRecommendation.getBundles(18);
+    it('should return return bundle with value 0',() => {
+      let bundle = ProductRecommendation.getBundles();
       expect(bundle.value).to.be.equal(0);
     })
   })

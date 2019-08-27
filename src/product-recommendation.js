@@ -1,5 +1,5 @@
 class ProductRecommendation {
-  static getBundles(age) {
+  static getBundles() {
     return {
       value: 0
     }
