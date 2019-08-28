@@ -1,6 +1,6 @@
 export default class Bundle {
   constructor(id, name, products) {
-    this.id = id;
+    this.value = id;
     this.name = name;
     this.products = products
   }

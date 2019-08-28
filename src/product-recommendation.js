@@ -5,7 +5,7 @@ import CurrentPlusBundle from './bundles/current-plus';
 
 export default class ProductRecommendation {
 
-  constructor(){
+  constructor() {
     this.bundles = [
       new JuniorSaverBundle(),
       new StudentBundle(),
@@ -14,10 +14,26 @@ export default class ProductRecommendation {
     ];
   }
 
+  getRecommendedBundle(age, isStudent, income) {
+    let validBundles = this.getBundles(age, isStudent, income);
+    let maxValue = -1; let indexOfMax = -1;
+    for (let index = 0; index < validBundles.length; index++) {
+      if (validBundles[index].value > maxValue) {
+        indexOfMax = index;
+        maxValue = validBundles[index].value;
+      }
+    };
+
+    if(indexOfMax === -1)
+      return null;
+
+    return validBundles[indexOfMax];
+  }
+
   getBundles(age, isStudent, income) {
     let validBundles = [];
-    for(let bundle of this.bundles){
-      if(bundle.isEligible(age, isStudent, income)){
+    for (let bundle of this.bundles) {
+      if (bundle.isEligible(age, isStudent, income)) {
         validBundles.push(bundle);
       }
     }
