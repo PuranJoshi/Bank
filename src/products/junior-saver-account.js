@@ -1,6 +1,7 @@
 export default class JuniorSaverAccount {
 
   constructor() {
+    this.type = 'JuniorSaverAccount'
     this.maxAge = 18;
   }
 

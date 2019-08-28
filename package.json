@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index",
     "test": "./node_modules/.bin/mocha --require @babel/register --require  @babel/polyfill --recursive './test'"
   },
   "keywords": [],
