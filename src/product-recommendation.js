@@ -1,6 +1,7 @@
 import JuniorSaverBundle from './bundles/junior-saver';
 import StudentBundle from './bundles/student';
 import CurrentBundle from './bundles/current';
+import CurrentPlusBundle from './bundles/current-plus';
 
 export default class ProductRecommendation {
 
@@ -8,7 +9,8 @@ export default class ProductRecommendation {
     this.bundles = [
       new JuniorSaverBundle(),
       new StudentBundle(),
-      new CurrentBundle()
+      new CurrentBundle(),
+      new CurrentPlusBundle()
     ];
   }
 

@@ -1,10 +1,17 @@
-export default class DebitCard {
+export default class CreditCard {
 
   constructor() {
-    this.minIncome == account;
+    this.minIncome = 12000;
+    this.minAge = 17;
   }
 
-  isEligible(age, isStudent){
-    return this.validAccounts.filter(account => this.account.Type === account).length > 0;
+  isEligible(age, income) {
+    if (this.minAge >= age)
+      return false;
+
+    if (this.minIncome >= income)
+      return false;
+
+    return true;
   }
 }

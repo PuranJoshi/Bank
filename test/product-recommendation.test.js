@@ -33,9 +33,11 @@ describe('ProductRecommendation', ()=> {
     it('should return Current Plus bundle when age is more than 17 and income is greater than 12000',() => {
       let isStudent = false; let income = 12001;
       var bundle = productRecommendation.getBundles(18, isStudent, income);
-      expect(bundle.length).to.be.equal(1);
-      expect(bundle[0].name).to.be.equal('Current Plus');
+      expect(bundle.length).to.be.equal(2);
+      expect(bundle[0].name).to.be.equal('Current');
       expect(bundle[0].id).to.be.equal(1);
+      expect(bundle[1].name).to.be.equal('Current Plus');
+      expect(bundle[1].id).to.be.equal(2);
     })
 
   })

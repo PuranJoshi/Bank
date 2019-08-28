@@ -12,6 +12,9 @@ export default class Bundle {
     if(this.products.debitCard && this.isEligibleForDebitCard() == false)
       return false;
 
+    if(this.products.creditCard && this.isEligibleForCreditCard(age, income) == false)
+      return false;
+
     return true;
   }
 
@@ -21,5 +24,9 @@ export default class Bundle {
 
   isEligibleForDebitCard(){
     return this.products.debitCard.isEligible(this.products.account.type);
+  }
+
+  isEligibleForCreditCard(age, income){
+    return this.products.creditCard.isEligible(age, income);
   }
 }
