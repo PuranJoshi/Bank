@@ -1,7 +1,7 @@
 export default class DebitCard {
 
   constructor() {
-    this.validAccounts = ['StudentAccount'];
+    this.validAccounts = ['StudentAccount', 'CurrentAccount'];
   }
 
   isEligible(accountType){

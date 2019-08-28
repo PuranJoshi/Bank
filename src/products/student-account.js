@@ -5,6 +5,13 @@ export default class StudentAccount {
   }
 
   isEligible(age, isStudent){
-    return age > this.minAge && isStudent;
+
+    if(isStudent == false)
+      return false;
+
+    if(this.minAge >= age)
+      return false;
+
+    return true;
   }
 }
