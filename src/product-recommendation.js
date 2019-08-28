@@ -2,6 +2,7 @@ import JuniorSaverBundle from './bundles/junior-saver';
 import StudentBundle from './bundles/student';
 import CurrentBundle from './bundles/current';
 import CurrentPlusBundle from './bundles/current-plus';
+import GoldBundle from './bundles/gold';
 
 export default class ProductRecommendation {
 
@@ -10,7 +11,8 @@ export default class ProductRecommendation {
       new JuniorSaverBundle(),
       new StudentBundle(),
       new CurrentBundle(),
-      new CurrentPlusBundle()
+      new CurrentPlusBundle(),
+      new GoldBundle()
     ];
   }
 

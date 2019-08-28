@@ -2,7 +2,7 @@ export default class StudentAccount {
   constructor() {
     this.type = 'CurrentPlusAccount'
     this.minAge = 17,
-    this.minIncome = 12000
+    this.minIncome = 40000
   }
 
   isEligible(age, isStudent, income = 0){
