@@ -1,4 +1,4 @@
-export default class StudentAccount {
+export default class CurrentAccount {
   constructor() {
     this.type = 'CurrentAccount'
     this.minAge = 17,
