@@ -1,28 +1,18 @@
 import CurrentAccount from '../products/current-account';
 import DebitCard from '../products/debit-card';
+import Bundle from './bundle';
 
-export default class CurrentBundle {
+export default class CurrentBundle extends Bundle{
   constructor() {
-    this.id = 1;
-    this.name = 'Current';
     let account = new CurrentAccount();
-    this.products = {
+    let products = {
       account: account,
       debitCard: new DebitCard()
     }
+    super(1, 'Current', products);
   }
 
   isEligible(age, isStudent, income) {
-
-    let isEligibleAccount = this.products.account.isEligible(age, isStudent, income);
-    if(isEligibleAccount == false)
-      return false;
-
-    let isEligibleDebit = this.products.debitCard.isEligible(this.products.account.type);
-    if(isEligibleDebit == false)
-      return false;
-
-    return true
+    return super.isEligible(age, isStudent, income);
   }
-
 }

@@ -1,27 +1,19 @@
 import StudentAccount from '../products/student-account';
 import DebitCard from '../products/debit-card';
+import Bundle from './bundle';
 
-export default class StudentBundle {
+export default class StudentBundle extends Bundle{
   constructor() {
-    this.id = 0;
-    this.name = 'Student';
     let account = new StudentAccount();
-    this.products = {
+    let products = {
       account: account,
       debitCard: new DebitCard()
     }
+    super(0, 'Student', products);
   }
 
   isEligible(age, isStudent) {
-    let isEligibleAccount = this.products.account.isEligible(age, isStudent);
-    if(isEligibleAccount == false)
-      return false;
-
-    let isEligibleDebit = this.products.debitCard.isEligible(this.products.account.type);
-    if(isEligibleDebit == false)
-      return false;
-
-    return true
+    return super.isEligible(age, isStudent);
   }
 
 }

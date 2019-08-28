@@ -1,16 +1,18 @@
 import JuniorSaverAccount from '../products/junior-saver-account';
+import Bundle from './bundle';
 
-export default class JuniorSaverBundle {
+export default class JuniorSaverBundle extends Bundle{
   constructor() {
-    this.id = 0;
-    this.name = 'Junior Saver';
-    this.products = {
+
+    let products = {
       account: new JuniorSaverAccount()
     }
+
+    super(0, 'Junior Saver', products);
+
   }
 
-  isEligible(age, isStudent){
-     var result = this.products.account.isEligible(age, isStudent);
-     return result;
+  isEligible(age){
+     return super.isEligible(age);
   }
 }
