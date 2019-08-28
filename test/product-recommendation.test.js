@@ -6,22 +6,18 @@ describe('ProductRecommendation', ()=> {
 
     const productRecommendation = new ProductRecommendation();
 
-    it('should return return bundle with value 0',() => {
-      var bundle = productRecommendation.getBundles();
-      expect(bundle.value).to.be.equal(0);
-    });
-
     it('should return return Junior Saver bundle when age is less than 18',() => {
       var bundle = productRecommendation.getBundles(17);
-      expect(bundle.name).to.be.equal('Junior Saver');
-      expect(bundle.id).to.be.equal(0);
+      expect(bundle.length).to.be.equal(1);
+      expect(bundle[0].name).to.be.equal('Junior Saver');
+      expect(bundle[0].id).to.be.equal(0);
     })
 
     it('should return return Student bundle when age is more than 17 and is a student',() => {
       let isStudent = true;
       var bundle = productRecommendation.getBundles(18, isStudent);
-      expect(bundle.name).to.be.equal('Student');
-      expect(bundle.id).to.be.equal(0);
+      expect(bundle[0].name).to.be.equal('Student');
+      expect(bundle[0].id).to.be.equal(0);
     })
 
   })
