@@ -40,6 +40,20 @@ describe('ProductRecommendation', ()=> {
       expect(bundle[1].value).to.be.equal(2);
     })
 
+
+
+    it('should return only Gold bundle when age is more than 17 and income is greater than 40000',() => {
+      let isStudent = false; let income = 40001;
+      var bundle = productRecommendation.getBundles(18, isStudent, income);
+      expect(bundle.length).to.be.equal(3);
+      expect(bundle[0].name).to.be.equal('Current');
+      expect(bundle[0].value).to.be.equal(1);
+      expect(bundle[1].name).to.be.equal('Current Plus');
+      expect(bundle[1].value).to.be.equal(2);
+      expect(bundle[2].name).to.be.equal('Gold');
+      expect(bundle[2].value).to.be.equal(3);
+    })
+
   })
 
   describe('#getRecommendedBundle()', () => {
@@ -72,6 +86,13 @@ describe('ProductRecommendation', ()=> {
       var bundle = productRecommendation.getRecommendedBundle(18, isStudent, income);
       expect(bundle.name).to.be.equal('Current Plus');
       expect(bundle.value).to.be.equal(2);
+    })
+
+    it('should return only Gold bundle when age is more than 17 and income is greater than 40000',() => {
+      let isStudent = false; let income = 40001;
+      var bundle = productRecommendation.getRecommendedBundle(18, isStudent, income);
+      expect(bundle.name).to.be.equal('Gold');
+      expect(bundle.value).to.be.equal(3);
     })
 
   })
