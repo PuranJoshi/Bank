@@ -6,18 +6,27 @@ describe('ProductRecommendation', ()=> {
 
     const productRecommendation = new ProductRecommendation();
 
-    it('should return return Junior Saver bundle when age is less than 18',() => {
+    it('should return Junior Saver bundle when age is less than 18',() => {
       var bundle = productRecommendation.getBundles(17);
       expect(bundle.length).to.be.equal(1);
       expect(bundle[0].name).to.be.equal('Junior Saver');
       expect(bundle[0].id).to.be.equal(0);
     })
 
-    it('should return return Student bundle when age is more than 17 and is a student',() => {
+    it('should return Student bundle when age is more than 17 and is a student',() => {
       let isStudent = true;
       var bundle = productRecommendation.getBundles(18, isStudent);
+      expect(bundle.length).to.be.equal(1);
       expect(bundle[0].name).to.be.equal('Student');
       expect(bundle[0].id).to.be.equal(0);
+    })
+
+    it('should return Current bundle when age is more than 17 and income is greater than 0',() => {
+      let isStudent = false; let income = 1;
+      var bundle = productRecommendation.getBundles(18, isStudent, income);
+      expect(bundle.length).to.be.equal(1);
+      expect(bundle[0].name).to.be.equal('Current');
+      expect(bundle[0].id).to.be.equal(1);
     })
 
   })
