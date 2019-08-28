@@ -51,5 +51,28 @@ describe('ProductRecommendation', ()=> {
       expect(bundle.name).to.be.equal('Junior Saver');
       expect(bundle.value).to.be.equal(0);
     })
+
+    it('should return Student bundle when age is more than 17 and is a student',() => {
+      let isStudent = true;
+      var bundle = productRecommendation.getRecommendedBundle(18, isStudent);
+      expect(bundle.name).to.be.equal('Student');
+      expect(bundle.value).to.be.equal(0);
+    })
+
+    it('should return Current bundle when age is more than 17 and income is greater than 0',() => {
+      let isStudent = false; let income = 1;
+      var bundle = productRecommendation.getRecommendedBundle(18, isStudent, income);
+      expect(bundle.name).to.be.equal('Current');
+      expect(bundle.value).to.be.equal(1);
+    })
+
+
+    it('should return only Current Plus bundle when age is more than 17 and income is greater than 12000',() => {
+      let isStudent = false; let income = 12001;
+      var bundle = productRecommendation.getRecommendedBundle(18, isStudent, income);
+      expect(bundle.name).to.be.equal('Current Plus');
+      expect(bundle.value).to.be.equal(2);
+    })
+
   })
 })
