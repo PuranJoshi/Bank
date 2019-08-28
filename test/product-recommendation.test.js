@@ -17,5 +17,12 @@ describe('ProductRecommendation', ()=> {
       expect(bundle.id).to.be.equal(0);
     })
 
+    it('should return return Student bundle when age is more than 17 and is a student',() => {
+      let isStudent = true;
+      var bundle = productRecommendation.getBundles(18, isStudent);
+      expect(bundle.name).to.be.equal('Student');
+      expect(bundle.id).to.be.equal(0);
+    })
+
   })
 })
