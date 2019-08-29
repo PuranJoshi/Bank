@@ -1,11 +1,16 @@
-export default class CreditCard {
-  constructor(type, age, income) {
-    this.age = age;
-    this.type = type;
-    this.income = income;
+export default class Account {
+  constructor(type, age, isStudent, income) {
+    this.isStudent = isStudent
+    this.type = type
+    this.age = age,
+    this.income = income
   }
 
-  isEligible(age, income) {
+  isEligible(age, isStudent, income) {
+    
+    if(this.isStudent != isStudent)
+      return false
+
     if(this.age)
     {
       if (this.age.min && this.age.min >= age)
@@ -13,13 +18,12 @@ export default class CreditCard {
       if (this.age.max && this.age.max <= age)
         return false;
     }
-    
+
     if (this.income)
     { 
       if(this.income.min && this.income.min >= income)
         return false;
     }
-      
     return true;
   }
 }

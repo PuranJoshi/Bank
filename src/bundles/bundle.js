@@ -6,7 +6,7 @@ export default class Bundle {
   }
 
   isEligible(age, isStudent, income) {
-    if(this.isEligibleAccount(age, isStudent, income) == false)
+    if(this.products.account && this.isEligibleAccount(age, isStudent, income) == false)
       return false;
 
     if(this.products.debitCard && this.isEligibleForDebitCard() == false)
@@ -14,7 +14,7 @@ export default class Bundle {
 
     if(this.products.creditCard && this.isEligibleForCreditCard(age, income) == false)
       return false;
-
+      
     return true;
   }
 
