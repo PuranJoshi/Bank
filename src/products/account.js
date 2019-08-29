@@ -6,22 +6,22 @@ export default class Account {
     this.income = income
   }
 
-  isEligible(age, isStudent, income) {
+  isEligible(customer) {
     
-    if(this.isStudent != isStudent)
+    if(this.isStudent != customer.isStudent)
       return false
 
     if(this.age)
     {
-      if (this.age.min && this.age.min >= age)
+      if (this.age.min && this.age.min >= customer.age)
         return false;
-      if (this.age.max && this.age.max <= age)
+      if (this.age.max && this.age.max <= customer.age)
         return false;
     }
 
     if (this.income)
     { 
-      if(this.income.min && this.income.min >= income)
+      if(this.income.min && this.income.min >= customer.income)
         return false;
     }
     return true;

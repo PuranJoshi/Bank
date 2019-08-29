@@ -31,29 +31,32 @@ export default class ProductRecommendation {
     ];
   }
 
-  getRecommendedBundle(age, isStudent, income) {
-    let validBundles = this.getBundles(age, isStudent, income);
-    let maxValue = -1; let indexOfMax = -1;
-    for (let index = 0; index < validBundles.length; index++) {
-      if (validBundles[index].value > maxValue) {
-        indexOfMax = index;
-        maxValue = validBundles[index].value;
-      }
-    };
-
-    if (indexOfMax === -1)
-      return null;
-
-    return validBundles[indexOfMax];
+  getRecommendedBundle(customer) {
+    let validBundles = this.getBundles(customer);
+    return this.getMaxValuedBundle(validBundles);
   }
 
-  getBundles(age, isStudent, income) {
+  getBundles(customer) {
     let validBundles = [];
     for (let bundle of this.bundles) {
-      if (bundle.isEligible(age, isStudent, income)) {
+      if (bundle.isEligible(customer)) {
         validBundles.push(bundle);
       }
     }
-    return validBundles;
+    return validBundles;  
+  }
+
+  getMaxValuedBundle(bundles) {
+    let maxValue = -1; let indexOfMax = -1;
+    for (let index = 0; index < bundles.length; index++) {
+      if (bundles[index].value > maxValue) {
+        indexOfMax = index;
+        maxValue = bundles[index].value;
+      }
+    };
+    if (indexOfMax === -1)
+      return null;
+
+    return bundles[indexOfMax];
   }
 }
