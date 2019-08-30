@@ -31,7 +31,6 @@ describe('ProductRecommendation', ()=> {
     it('should return Current bundle when age is more than 17 and income is greater than 0',() => {
       let customer = {
         age : 18,
-        isStudent: false, 
         income: 10001
       }
       var bundle = productRecommendation.getBundles(customer);
@@ -44,7 +43,6 @@ describe('ProductRecommendation', ()=> {
     it('should return only Current Plus bundle when age is more than 17 and income is greater than 12000',() => {
       let customer = {
         age : 18,
-        isStudent: false, 
         income: 12001
       }
       var bundle = productRecommendation.getBundles(customer);
@@ -60,7 +58,6 @@ describe('ProductRecommendation', ()=> {
     it('should return only Gold bundle when age is more than 17 and income is greater than 40000',() => {
       let customer = {
         age : 18,
-        isStudent: false, 
         income: 40001
       }
       var bundle = productRecommendation.getBundles(customer);
@@ -101,7 +98,6 @@ describe('ProductRecommendation', ()=> {
     it('should return Current bundle when age is more than 17 and income is greater than 0',() => {
       let customer = {
         age : 18,
-        isStudent: false, 
         income: 10001
       }
       var bundle = productRecommendation.getRecommendedBundle(customer);
@@ -113,7 +109,6 @@ describe('ProductRecommendation', ()=> {
     it('should return only Current Plus bundle when age is more than 17 and income is greater than 12000',() => {
       let customer = {
         age : 18,
-        isStudent: false,
         income: 12001
       }
       var bundle = productRecommendation.getRecommendedBundle(customer);
@@ -124,7 +119,6 @@ describe('ProductRecommendation', ()=> {
     it('should return only Gold bundle when age is more than 17 and income is greater than 40000',() => {
       let customer = {
         age : 18,
-        isStudent: false,
         income: 40001
       }
       var bundle = productRecommendation.getRecommendedBundle(customer);
