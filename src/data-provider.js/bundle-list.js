@@ -37,7 +37,7 @@ export default class BundleList {
       new Bundle(3, 'Gold', {
         account: new Account('Current Plus', [isAdult, hasHighIncome]),
         debitCard: new DebitCard(),
-        creditCard: new CreditCard('Gold Credit Card', [isAdult, hasMediumIncome]),
+        creditCard: new CreditCard('Gold Credit Card', [isAdult, hasHighIncome]),
       }),
     ]
   }
