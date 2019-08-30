@@ -8,10 +8,14 @@ import IncomeRule from '../rules/income-rule';
 
 export default class BundleList {
   constructor() {
-    
+
     let isChildRule = new AgeRule({max: 18});
     let isAdult = new AgeRule({min: 17});
     let isStudent = new StudentRule(true);
+
+    let hasLowIncome = new IncomeRule( {min: 0});
+    let hasMediumIncome = new IncomeRule( {min: 12000});
+    let hasHighIncome = new IncomeRule( {min: 40000});
 
     this.allBundles = [
       new Bundle(0, 'Junior Saver', {
@@ -22,18 +26,18 @@ export default class BundleList {
         debitCard: new DebitCard()
       }),
       new Bundle(1, 'Classic', {
-        account: new Account('Current',  [isAdult, new IncomeRule( {min: 0})]),
+        account: new Account('Current',  [isAdult, hasLowIncome]),
         debitCard: new DebitCard()
       }),
       new Bundle(2, 'Classic Plus', {
-        account: new Account('Current', [isAdult, new IncomeRule( {min: 12000})]),
+        account: new Account('Current', [isAdult, hasMediumIncome]),
         debitCard: new DebitCard(),
-        creditCard: new CreditCard('Credit Card', [isAdult, new IncomeRule( {min: 12000})]),
+        creditCard: new CreditCard('Credit Card', [isAdult, hasMediumIncome]),
       }),
       new Bundle(3, 'Gold', {
-        account: new Account('Current Plus', [isAdult, new IncomeRule( {min: 40000})]),
+        account: new Account('Current Plus', [isAdult, hasHighIncome]),
         debitCard: new DebitCard(),
-        creditCard: new CreditCard('Gold Credit Card', [isAdult, new IncomeRule( {min: 40000})]),
+        creditCard: new CreditCard('Gold Credit Card', [isAdult, hasMediumIncome]),
       }),
     ]
   }
