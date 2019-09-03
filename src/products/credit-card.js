@@ -1,3 +1,5 @@
+import _ from 'underscore';
+
 export default class CreditCard {
   constructor(type, rules) {
     this.type = type,
@@ -5,11 +7,6 @@ export default class CreditCard {
   }
 
   isEligible(customer) {
-    for (let rule of this.rules) {
-      var isEligible = rule.isEligible(customer);
-      if (isEligible == false)
-        return false;
-    };
-    return true;
+    return _.all(this.rules, rule => rule.isEligible(customer));
   }
 }
