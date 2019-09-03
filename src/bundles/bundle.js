@@ -5,28 +5,28 @@ export default class Bundle {
     this.products = products
   }
 
-  isEligible(age, isStudent, income) {
-    if(this.products.account && this.isEligibleAccount(age, isStudent, income) == false)
+  isEligible(customer) {
+    if(this.products.account && this.isEligibleAccount(customer) == false)
       return false;
 
     if(this.products.debitCard && this.isEligibleForDebitCard() == false)
       return false;
 
-    if(this.products.creditCard && this.isEligibleForCreditCard(age, income) == false)
+    if(this.products.creditCard && this.isEligibleForCreditCard(customer) == false)
       return false;
       
     return true;
   }
 
-  isEligibleAccount(age, isStudent, income){
-    return this.products.account.isEligible(age, isStudent, income)
+  isEligibleAccount(customer){
+    return this.products.account.isEligible(customer)
   }
 
   isEligibleForDebitCard(){
     return this.products.debitCard.isEligible(this.products.account.type);
   }
 
-  isEligibleForCreditCard(age, income){
-    return this.products.creditCard.isEligible(age, income);
+  isEligibleForCreditCard(customer){
+    return this.products.creditCard.isEligible(customer);
   }
 }
