@@ -1,4 +1,5 @@
 import DataProvider from './data-provider.js/bundle-list';
+import _ from 'underscore';
 
 export default class ProductRecommendation {
 
@@ -7,32 +8,17 @@ export default class ProductRecommendation {
   }
 
   getRecommendedBundle(customer) {
-    let validBundles = this.getBundles(customer);
-    return this.getMaxValuedBundle(validBundles);
+    let eligibleBundles = this.getBundles(customer);
+    return this.getMaxValuedBundle(eligibleBundles);
   }
 
   getBundles(customer) {
     this.bundles =  new DataProvider().allBundles;
-    let validBundles = [];
-    for (let bundle of this.bundles) {
-      if (bundle.isEligible(customer)) {
-        validBundles.push(bundle);
-      }
-    }
-    return validBundles;  
+    
+    return _.filter(this.bundles, (bundle) => bundle.isEligible(customer));
   }
 
   getMaxValuedBundle(bundles) {
-    let maxValue = -1; let indexOfMax = -1;
-    for (let index = 0; index < bundles.length; index++) {
-      if (bundles[index].value > maxValue) {
-        indexOfMax = index;
-        maxValue = bundles[index].value;
-      }
-    };
-    if (indexOfMax === -1)
-      return null;
-
-    return bundles[indexOfMax];
+    return _.max(bundles, (bundle) => bundle.value);
   }
 }
